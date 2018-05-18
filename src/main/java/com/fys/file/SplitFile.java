@@ -48,19 +48,15 @@ public class SplitFile {
             e.printStackTrace();
         } finally {
             //程序执行完毕，最后关闭流
-            if(null != fileInputStream) {
-                try {
+            try {
+                if (null != fileInputStream) {
                     fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-            }
-            if(null != fileOutputStream) {
-                try {
+                if(null != fileOutputStream) {
                     fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
