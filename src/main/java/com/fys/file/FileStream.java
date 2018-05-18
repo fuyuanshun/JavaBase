@@ -6,6 +6,7 @@ import java.io.*;
  *  IO 读取文件内容
  */
 public class FileStream {
+    private static FileInputStream fileInputStream = null;
     //要操作的文件名
     private static String fileName = "E:/sql.sql";
 
@@ -19,7 +20,6 @@ public class FileStream {
      *     每次读取一行
      */
     private static void fileByReadLine(File file) {
-        FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream(file);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));

@@ -6,10 +6,10 @@ import java.io.File;
  * IO 遍历文件夹下的文件，不遍历子文件夹
  */
 public class IteratorFileSize {
-    static long min = Integer.MAX_VALUE;
-    static long max = 0;
-    static File minFile ;
-    static File maxFile ;
+    private static long min = Integer.MAX_VALUE;
+    private static long max = 0;
+    private static File minFile ;
+    private static File maxFile ;
 
     public static void main(String[] args) {
         String fileName = "C:/WINDOWS";
