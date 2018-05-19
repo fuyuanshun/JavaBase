@@ -35,10 +35,13 @@ public class FileCode {
      */
     private static void ChineseEncodingByFileInputStream() {
         File file = new File("E:/sql.sql");
+        //创建一个可以放下文件所有内容的字节数组
         byte[] fileContent = new byte[(int) file.length()];
+        //读取文件的流
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream(file);
+            //把文件内容放到字节数组中
             fileInputStream.read(fileContent);
             //以字节的形式读取文件，并把字节转化为16进制
             for (byte b : fileContent) {
@@ -54,6 +57,14 @@ public class FileCode {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if(null != fileInputStream) {
+                    fileInputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
