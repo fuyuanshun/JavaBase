@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class HexAndLetter {
     public static void main(String[] args) {
-        String str = "小双双最可爱";
+        String str = "付元顺超级帅";
         String codeType = "utf-8";
         String[] hexCode = toHex(str, codeType);
         System.out.println("十六进制为:");
