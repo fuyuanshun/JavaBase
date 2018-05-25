@@ -12,6 +12,11 @@ public class EncodedFile {
         encodedFile(encodingFileName, encodedFile);
     }
 
+    /**
+     * 解密一个文件
+     * @param encodingFileName
+     * @param encodedFile
+     */
     private static void encodedFile(String encodingFileName, String encodedFile) {
         FileReader fileReader = null;
         FileWriter fileWriter = null;
@@ -48,6 +53,10 @@ public class EncodedFile {
         }
     }
 
+    /**
+     * 解密
+     * @param fileContent
+     */
     private static void encoded(char[] fileContent) {
         for (int i = 0; i < fileContent.length; i++) {
             char c = fileContent[i];
@@ -71,6 +80,11 @@ public class EncodedFile {
         }
     }
 
+    /**
+     * 判断一个字符是否为数字或者字母
+     * @param c
+     * @return
+     */
     private static boolean isLetterOrDigit(char c) {
         String pattern = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         return -1 == pattern.indexOf(c) ? false : true;
