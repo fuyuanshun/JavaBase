@@ -54,6 +54,8 @@ public class RemoveComment {
         }
 
         try {
+            //判断是否是注释的标记
+            boolean isCom = false;
             String str = null;
             bufferedReader = new BufferedReader(new FileReader(file));
             while(null != (str=bufferedReader.readLine())) {
@@ -61,6 +63,21 @@ public class RemoveComment {
                 // 并且后面为//和0个和多个字符的字符串，则为注释， 将此字符串设为空串
                 if(Pattern.matches("^\\s*/{2}\\S*", str)) {
                     str = "";
+                }
+                // 去掉/**注释
+                if (Pattern.matches("\\s*/\\*{2}", str)) {
+                    isCom = true;
+                    System.out.println("注释开始!!!!!!!!!!!!!!");
+                }
+                //如果接下来的是注释内容， 并且不与*/匹配，则将内容换位空串
+                if(isCom && !Pattern.matches("\\s*\\*/", str)) {
+                    //如果是注释，将注释内的所有字符串替换为空串
+                    str = "";
+                    //如果读取到的内容与*/匹配，则表明注释结束，将*/替换为空串，打印出注释结束，将标记设置为false
+                } else if (Pattern.matches("\\s*\\*/", str)) {
+                    str = "";
+                    System.out.println("注释结束!!!!!!!!!!");
+                    isCom = false;
                 }
                 System.out.println(str);
             }
