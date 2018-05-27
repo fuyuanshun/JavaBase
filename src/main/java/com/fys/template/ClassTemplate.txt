@@ -1,0 +1,15 @@
+public class @class@ {
+    //属性
+    private @type@ @property@;
+    //构造函数
+    public @class@(){
+    }
+
+    public void set@Uproperty@(@type@ @property@){
+        this.@property@ = @property@;
+    }
+
+    public @type@ get@Uproperty@(){
+        return this.@property@;
+    }
+}
