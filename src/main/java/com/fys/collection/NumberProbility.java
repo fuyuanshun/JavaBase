@@ -9,18 +9,23 @@ import java.util.List;
  *  使用shuffle 1，000，000 次 统计出现的概率
  */
 public class NumberProbility {
+    //前三个数
+    private static int firstNum = 3;
+    private static int secondNum = 1;
+    private static int thirdNum = 4;
+    //统计的概率
+    private static double probility;
+    //总共计算的次数
+    private static double total = 1000000;
+    //3 1 4 出现的次数
+    private static double count = 0;
+
     public static void main(String[] args) {
-        //前三个数
-        int firstNum = 3;
-        int secondNum = 1;
-        int thirdNum = 4;
-        //统计的概率
-        double probility;
-        //总共计算的次数
-        double total = 1000000;
-        //3 1 4 出现的次数
-        double count = 0;
         List<Integer> list = new ArrayList<>();
+        getProbility(list);
+    }
+
+    private static void getProbility(List<Integer> list) {
         //初始化List
         for (int i = 0; i < 10; i++) {
             list.add(i);
