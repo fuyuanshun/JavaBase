@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 使用lambda表达式引用静态方法
  */
-public class LambdaUseStatic {
+public class LambdaUseStaticMethod {
     public static void main(String[] args) {
         List<People> list;
         list = PeopleListUtil.getInitPeople(10);
@@ -27,10 +27,10 @@ public class LambdaUseStatic {
         System.out.println("使用lambda表达式:");
         filter(list, people->people.getAge() < 10 && people.getAge() > 0);
         System.out.println("在lambda表达式中使用静态方法:");
-        filter(list, people->LambdaUseStatic.checkPeople(people));
+        filter(list, people->LambdaUseStaticMethod.checkPeople(people));
 
         System.out.println("直接使用lambda静态方法");
-        filter(list, LambdaUseStatic::checkPeople);
+        filter(list, LambdaUseStaticMethod::checkPeople);
     }
 
     private static boolean checkPeople(People people) {
