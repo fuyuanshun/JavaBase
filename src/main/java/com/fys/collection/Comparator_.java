@@ -17,14 +17,19 @@ public class Comparator_ {
             list.add(new People(i, "fys"+ran, (ran+1)*2));
         }
 
-        //比较的策略
-        Comparator<People> comparator = (People o1, People o2) -> {
+        //使用匿名类
+       /* Comparator<People> comparator = (People o1, People o2) -> {
             return o1.getAge() - o2.getAge();
-        };
+        };*/
 
         //如果不添加Comparator接口则会报错，因为People不是一个可比较的类型
         //另一种方法是让People实现Comparable接口，就不需要在此类中写内部类
-        Collections.sort(list, comparator);
+        //lambda引用静态方法
+        Collections.sort(list, Comparator_::comparatorAge);
         System.out.println(list);
+    }
+
+    private static int comparatorAge(People o1, People o2) {
+        return o1.getAge() - o2.getAge();
     }
 }
