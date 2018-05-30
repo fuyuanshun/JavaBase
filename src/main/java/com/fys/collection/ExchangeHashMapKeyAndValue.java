@@ -14,6 +14,19 @@ public class ExchangeHashMapKeyAndValue {
         for (int i = 0; i < 10; i++) {
             hashMap.put("fysKey" + i, "fysValue" + i);
         }
+        hashMap = exchange(hashMap);
+
+        Set<String> newKeys = hashMap.keySet();
+        for (String newKey : newKeys) {
+            System.out.println(newKey);
+        }
+    }
+
+    /**
+     * 反转的方法
+     * @param hashMap
+     */
+    private static HashMap<String, String> exchange(HashMap<String, String> hashMap) {
         //获得hashMap所有的key
         Set<String> keys = hashMap.keySet();
         //获得hashMap所有的value
@@ -36,9 +49,7 @@ public class ExchangeHashMapKeyAndValue {
         hashMap.clear();
         //完成交换
         hashMap.putAll(newHashMap);
-        Set<String> newKeys = hashMap.keySet();
-        for (String newKey : newKeys) {
-            System.out.println(newKey);
-        }
+        System.out.println("key value交换完成");
+        return hashMap;
     }
 }
