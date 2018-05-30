@@ -2,6 +2,7 @@ package com.fys.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 二叉树
@@ -12,7 +13,11 @@ public class Node {
     public Object value;
 
     public static void main(String[] args) {
-        int[] numbers = new int[]{67, 7, 30, 73, 10, 0, 78, 81, 10, 74};
+        Random random = new Random();
+        int[] numbers = new int[80000];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = random.nextInt(40000);
+        }
         Node roots = new Node();
         for (Object object : numbers) {
             roots.add(object);
@@ -25,23 +30,22 @@ public class Node {
         //如果值为空，则把数据放在当前节点上
         if (null == this.value) {
             this.value = value;
-            return;
-        }
-
-        // 如果新增的值小于等于原来节点的值,则添加到左节点
-        if ((Integer) this.value - (Integer) value >= 0) {
-            //如果左节点是空的，则创建一个左节点
-            if (null == leftNode) {
-                leftNode = new Node();
-            }
-            leftNode.add(value);
-            //否则添加到右节点
         } else {
-            //如果右节点是空的，则创建一个右节点
-            if (null == rightNode) {
-                rightNode = new Node();
+            // 如果新增的值小于等于原来节点的值,则添加到左节点
+            if ((Integer) this.value - (Integer) value >= 0) {
+                //如果左节点是空的，则创建一个左节点
+                if (null == leftNode) {
+                    leftNode = new Node();
+                }
+                leftNode.add(value);
+                //否则添加到右节点
+            } else {
+                //如果右节点是空的，则创建一个右节点
+                if (null == rightNode) {
+                    rightNode = new Node();
+                }
+                rightNode.add(value);
             }
-            rightNode.add(value);
         }
     }
 
@@ -61,7 +65,6 @@ public class Node {
         if (null != rightNode) {
             list.addAll(rightNode.get());
         }
-
         return list;
     }
 }
