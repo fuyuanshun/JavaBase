@@ -19,10 +19,7 @@ public class Comparator_ {
 
         //比较的策略
         Comparator<People> comparator = (People o1, People o2) -> {
-            if (o1.getAge() > o2.getAge()) {
-                return 1;
-            }
-            return -1;
+            return o1.getAge() - o2.getAge();
         };
 
         //如果不添加Comparator接口则会报错，因为People不是一个可比较的类型
