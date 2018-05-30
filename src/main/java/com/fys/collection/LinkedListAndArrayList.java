@@ -3,6 +3,7 @@ package com.fys.collection;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * linkedList 实现了List接口和Quene、Deque、
@@ -24,10 +25,19 @@ public class LinkedListAndArrayList {
         List<Integer> list = null;
         //ArrayList是顺序结构，插入数据较慢，查找数据快
         list = new ArrayList<>();
-        insert(list, "ArrayList");
+        insert(getList(ArrayList::new), "ArrayList");
         //LinkedList是链表结构，插入数据快，查找数据慢
         list = new LinkedList<>();
-        insert(list, "LinkedList");
+        insert(getList(LinkedList::new), "LinkedList");
+    }
+
+    /**
+     * 获得一个List
+     * @param listSupplier
+     * @return
+     */
+    private static List getList(Supplier<List> listSupplier) {
+        return listSupplier.get();
     }
 
     private static void insert(List<Integer> list, String type) {
