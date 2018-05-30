@@ -22,7 +22,9 @@ public class MyStack<T> {
 
     public static void main(String[] args) {
         MyStack<String> stringStack = new MyStack();
-        stringStack.push("fys");
+        stringStack.push("fys1");
+        stringStack.push("fys2");
+        stringStack.pull();
         System.out.println(stringStack.peek());
 
         MyStack<Integer> integerStack = new MyStack();
