@@ -41,4 +41,12 @@ public class People implements Serializable {
     public String toString() {
         return "id:"+ id +" name:"+ name + " age:"+ age+"";
     }
+
+    /**
+     * 测试lambda表达式引用容器中的方法
+     * @return
+     */
+    public boolean matched() {
+        return this.age < 10 && this.age > 0;
+    }
 }
