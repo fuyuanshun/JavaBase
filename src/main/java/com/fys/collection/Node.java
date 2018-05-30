@@ -7,10 +7,10 @@ import java.util.Random;
 /**
  * 二叉树
  */
-public class Node {
-    public Node leftNode;
-    public Node rightNode;
-    public Object value;
+public class Node<T> {
+    private Node<T> leftNode;
+    private Node<T> rightNode;
+    private T value;
 
     public static void main(String[] args) {
         Random random = new Random();
@@ -18,40 +18,40 @@ public class Node {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = random.nextInt(40000);
         }
-        Node roots = new Node();
-        for (Object object : numbers) {
-            roots.add(object);
+        Node<Integer> roots = new Node<>();
+        for (int number : numbers) {
+            roots.add(number);
         }
         System.out.println(roots.get());
     }
 
     //添加节点
-    public void add(Object value) {
+    private void add(T t) {
         //如果值为空，则把数据放在当前节点上
         if (null == this.value) {
-            this.value = value;
+            this.value = t;
         } else {
             // 如果新增的值小于等于原来节点的值,则添加到左节点
-            if ((Integer) this.value - (Integer) value >= 0) {
+            if ((Integer) this.value - (Integer) t >= 0) {
                 //如果左节点是空的，则创建一个左节点
                 if (null == leftNode) {
-                    leftNode = new Node();
+                    leftNode = new Node<>();
                 }
-                leftNode.add(value);
+                leftNode.add(t);
                 //否则添加到右节点
             } else {
                 //如果右节点是空的，则创建一个右节点
                 if (null == rightNode) {
-                    rightNode = new Node();
+                    rightNode = new Node<>();
                 }
-                rightNode.add(value);
+                rightNode.add(t);
             }
         }
     }
 
     //中序遍历所有的节点
-    public List<Object> get() {
-        List<Object> list = new ArrayList<>();
+    public List<T> get() {
+        List<T> list = new ArrayList<>();
 
         //遍历左节点
         if (null != leftNode) {
