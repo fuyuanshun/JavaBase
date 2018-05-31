@@ -3,6 +3,7 @@ package com.fys.collection;
 import com.fys.bean.People;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * 使用聚合方式遍历数组
@@ -46,8 +47,8 @@ public class Aggregate {
                 return o2.getAge() - o1.getAge();
             }
         });
-        System.out.println("使用传统方式遍历数组,年龄最大的为");
-        System.out.println(list.get(0).getAge());
+        System.out.println("使用传统方式遍历数组,年龄排第三的为");
+        System.out.println(list.get(2).getAge());
     }
 
     /**
@@ -56,11 +57,12 @@ public class Aggregate {
      */
     private static void iteratorListByAggregate(List<People> list) {
         System.out.println("使用聚合方式遍历数组:");
+
         int age =
                 list
                         .stream()
                         .sorted((People o1, People o2) -> o1.getAge() > o2.getAge() ? -1 : 1)
-                        .skip(0)
+                        .skip(2)
                         .map(People::getAge)
                         .findFirst()
                         .get();
