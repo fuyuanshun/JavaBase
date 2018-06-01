@@ -49,4 +49,15 @@ public class People implements Serializable {
     public boolean matched() {
         return this.age < 10 && this.age > 0;
     }
+
+    /**
+     * 添加线程安全
+     */
+    public synchronized void decrAge() {
+        age = age + 1;
+    }
+
+    public synchronized void incrAge() {
+        age = age - 1;
+    }
 }
