@@ -54,10 +54,27 @@ public class People implements Serializable {
      * 添加线程安全
      */
     public synchronized void decrAge() {
-        age = age + 1;
+        if (age == 900) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        this.notify();
+        age = age - 1;
     }
 
     public synchronized void incrAge() {
-        age = age - 1;
+        if (age == 1000) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        age = age + 1;
+        this.notify();
     }
 }
