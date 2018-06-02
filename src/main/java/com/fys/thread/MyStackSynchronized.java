@@ -15,14 +15,42 @@ public class MyStackSynchronized<T> {
     }
 
     public synchronized void push(T t) {
-        linkedList.addLast(t);
+        if (linkedList.size() == 200) {
+            try {
+                System.out.println("压入"+ t +"失败..已经达到上限200个，正在等待消费者消费...");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            linkedList.addLast(t);
+            this.notify();
+        }
     }
 
     public synchronized void pull() {
-        linkedList.removeLast();
+        if (linkedList.size() == 0) {
+            try {
+                System.out.println("弹出失败..当前剩余0个，正在等待生产者生产...");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            linkedList.removeLast();
+            this.notify();
+        }
     }
 
     public synchronized T peek() {
+        if (linkedList.size() == 0) {
+            try {
+                System.out.println("当前剩余0,等待生产..");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         return linkedList.getLast();
     }
 
