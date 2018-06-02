@@ -3,23 +3,18 @@ package com.fys.thread;
 import java.util.Random;
 
 public class ProducerThread implements Runnable {
-    static  MyStackSynchronized<String> myStackSynchronized = new MyStackSynchronized<>();
+    private MyStackSynchronized<String> myStackSynchronized;
 
-    public static MyStackSynchronized getMyStackSynchronized() {
-        return myStackSynchronized;
+    public ProducerThread(MyStackSynchronized<String> myStackSynchronized, String name) {
+        Thread.currentThread().setName(name);
+        this.myStackSynchronized = myStackSynchronized;
     }
 
     @Override
     public void run() {
-        Random random = new Random();
-        char[] ch = new char[1];
-        String str = "";
-        int ran = 0;
         while (true) {
-            ran = random.nextInt(90 - 65 + 1) + 65;
-            ch[0] = (char) ran;
-            str = new String(ch);
-            System.out.println("生产者线程压入:" + str);
+            String str = randomStr();
+            System.out.println(Thread.currentThread().getName() + "压入:" + str);
             myStackSynchronized.push(str);
 
             try {
@@ -29,5 +24,17 @@ public class ProducerThread implements Runnable {
             }
         }
 
+    }
+
+    private String randomStr() {
+        Random random = new Random();
+        char[] ch = new char[1];
+        String str = "";
+        int ran = 0;
+
+        ran = random.nextInt(90 - 65 + 1) + 65;
+        ch[0] = (char) ran;
+        str = new String(ch);
+        return str;
     }
 }
