@@ -1,4 +1,4 @@
-package com.fys.socket;
+package com.fys.socket.robot;
 
 import java.io.*;
 import java.net.InetSocketAddress;
