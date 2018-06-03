@@ -6,6 +6,15 @@ public class People implements Serializable {
     private Integer id;
     private String name;
     private int age;
+    static String hello;
+    static{
+        System.out.println("初始化 hello");
+        hello = "HELLO!";
+    }
+
+    public People() {
+
+    }
 
     public People(Integer id, String name, int age) {
         this.id = id;
@@ -39,11 +48,12 @@ public class People implements Serializable {
 
     @Override
     public String toString() {
-        return "id:"+ id +" name:"+ name + " age:"+ age+"";
+        return "id:" + id + " name:" + name + " age:" + age + "";
     }
 
     /**
      * 测试lambda表达式引用容器中的方法
+     *
      * @return
      */
     public boolean matched() {
