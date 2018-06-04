@@ -1,5 +1,6 @@
 package com.fys.socket.robot;
 
+import com.fys.util.JDBCConfig;
 import com.fys.util.MysqlUtil;
 
 import java.io.*;
@@ -47,11 +48,10 @@ public class ChatRobot {
     /**
      * 启动服务器端
      */
+    @JDBCConfig(dbName = "robot")
     private void startServer(String strPort) {
-        String username = "root";
-        String password = "root";
         //数据库连接工具
-        Connection connection = MysqlUtil.getConn("robot", username, password);
+        Connection connection = MysqlUtil.getConn();
         try {
             serverSocket = new ServerSocket();
             //绑定一个端口
