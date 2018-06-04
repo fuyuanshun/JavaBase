@@ -1,5 +1,7 @@
 package com.fys.socket.robot;
 
+import com.fys.util.MysqlUtil;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -10,6 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  * 聊天机器人服务器端
+ * 暂时只支持8889端口
  */
 public class ChatRobot {
     static PreparedStatement preparedStatement = null;
@@ -18,16 +21,23 @@ public class ChatRobot {
     static InputStream inputStream = null;
     static DataOutputStream dataOutputStream = null;
     static DataInputStream dataInputStream = null;
-//
+
     public static void main(String[] args) {
+        ChatRobot server = new ChatRobot();
+        server.getUsePort();
+    }
+
+    private void getUsePort() {
         //匹配1-65535端口的正则表达式
-        String pattern = "(^\\d$)|(^[1-9]\\d{3}$)|(^[1-6][0-5][0-5][0-3][0-5]$)";
+        String pattern = "(^\\d$)|(^[1-9]\\d{1,3}$)|(^[1-6][0-5][0-5][0-3][0-5]$)";
         Scanner input = new Scanner(System.in);
         System.out.println("请输入要绑定的端口号");
-        String port = input.nextLine();
+        String strPort = input.nextLine();
         //如果符合正则表达式，则监听一个指定的端口，否则指定默认的端口
-        if (Pattern.matches(pattern, port)) {
-            startServer(port);
+        if (Pattern.matches(pattern, strPort)) {
+            //暂时只支持8889端口
+//            startServer(strPort);
+            startServer("8889");
         } else {
             System.out.println("端口格式有误，使用默认端口:8889");
             startServer("8889");
@@ -37,15 +47,16 @@ public class ChatRobot {
     /**
      * 启动服务器端
      */
-    private static void startServer(String port) {
-        String url = "jdbc:mysql://localhost/robot?characterEncoding=UTF-8";
+    private void startServer(String strPort) {
         String username = "root";
         String password = "root";
-        Connection connection = getConnection(url, username, password);
+        //数据库连接工具
+        Connection connection = MysqlUtil.getConn("robot", username, password);
         try {
             serverSocket = new ServerSocket();
             //绑定一个端口
-            serverSocket.bind(new InetSocketAddress(Integer.parseInt(port)));
+            serverSocket.bind(new InetSocketAddress(Integer.parseInt(strPort)));
+            System.out.println("服务器监听端口 " + strPort + " 中...");
             //等待客户端连接
             Socket socket = serverSocket.accept();
             outputStream = socket.getOutputStream();
@@ -85,7 +96,7 @@ public class ChatRobot {
      * @param receive
      * @return
      */
-    private static String selectDic(Connection connection, String receive) {
+    private String selectDic(Connection connection, String receive) {
         String sql = "select * from dictionary where receive = ?";
         String response = "";
         try {
@@ -99,23 +110,6 @@ public class ChatRobot {
             e.printStackTrace();
         }
         return response;
-    }
-
-    /**
-     * 获得一个数据库连接
-     * @return
-     */
-    private static Connection getConnection(String url, String username, String password) {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
     }
 
     /**
