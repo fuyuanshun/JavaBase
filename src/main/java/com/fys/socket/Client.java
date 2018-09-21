@@ -18,7 +18,6 @@ public class Client {
         }
         startClient(str);
     }
-
     /**
      * 启动客户端
      * @param str
