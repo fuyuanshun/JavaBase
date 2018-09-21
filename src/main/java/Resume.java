@@ -24,6 +24,7 @@ public class Resume {
                 System.out.println("输入错误，请重新输入!");
             }
         }
+        divSenstive();
     }
 
     private static void createResume(String name, String sex, Integer age) {
@@ -61,12 +62,12 @@ public class Resume {
      * 替换敏感字符串
      */
     private static void divSenstive() {
-        String s = "jiachuanyushazi";
+        String s = "色情恐怖分子";
 
         List<String> strs = new ArrayList<>();
-        strs.add("shazi");
-        strs.add("bendan");
-        strs.add("haha");
+        strs.add("爆炸");
+        strs.add("色情");
+        strs.add("恐怖");
 
         Iterator<String> iterator = strs.iterator();
 
