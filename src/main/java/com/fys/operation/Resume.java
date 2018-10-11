@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+package com.fys.operation;
+
+import java.util.*;
 
 public class Resume {
     public static void main(String[] args) {
@@ -24,7 +23,6 @@ public class Resume {
                 System.out.println("输入错误，请重新输入!");
             }
         }
-        divSenstive();
     }
 
     private static void createResume(String name, String sex, Integer age) {
