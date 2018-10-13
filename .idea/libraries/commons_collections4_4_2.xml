@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="commons-collections4-4.2">
+    <CLASSES>
+      <root url="jar://E:/JAR/commons-collections4-4.2/commons-collections4-4.2.jar!/" />
+      <root url="jar://E:/JAR/commons-compress-1.18-bin/commons-compress-1.18/commons-compress-1.18.jar!/" />
+      <root url="jar://E:/JAR/xmlbeans-3.0.1/lib/xbean.jar!/" />
+      <root url="jar://E:/JAR/poi-4.0.0/poi-4.0.0.jar!/" />
+      <root url="jar://E:/JAR/poi-4.0.0/poi-scratchpad-4.0.0.jar!/" />
+      <root url="jar://E:/JAR/poi-4.0.0/poi-ooxml-4.0.0.jar!/" />
+      <root url="jar://E:/JAR/poi-4.0.0/poi-excelant-4.0.0.jar!/" />
+      <root url="jar://E:/JAR/xmlbeans-3.0.1/lib/xbean_xpath.jar!/" />
+      <root url="jar://E:/JAR/xmlbeans-3.0.1/lib/xmlpublic.jar!/" />
+      <root url="jar://E:/JAR/xmlbeans-3.0.1/lib/resolver.jar!/" />
+      <root url="jar://E:/JAR/poi-4.0.0/poi-ooxml-schemas-4.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

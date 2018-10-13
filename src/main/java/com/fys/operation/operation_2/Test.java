@@ -6,6 +6,5 @@ public class Test {
         cat.name = "小花";
         cat.age = 1;
         cat.run();
-        System.out.println("The animal is " );
     }
 }

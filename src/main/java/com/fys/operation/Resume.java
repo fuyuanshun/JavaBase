@@ -4,25 +4,26 @@ import java.util.*;
 
 public class Resume {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        String name = createStrInput(input, "name");
-        String sex = createStrInput(input, "sex");
-        Integer age = createNumInput(input, "age");
-
-        System.out.println("信息采集完成，是否生成个人简介？ \n 1.是 2.退出");
-        boolean flag = true;
-        while (flag) {
-            String isContinue = createStrInput(input, "isContinue");
-            if (isContinue.equals("1")) {
-                createResume(name, sex, age);
-                flag = false;
-            } else if (isContinue.equals("2")) {
-                flag = false;
-            } else {
-                System.out.println("输入错误，请重新输入!");
-            }
-        }
+//        Scanner input = new Scanner(System.in);
+//
+//        String name = createStrInput(input, "name");
+//        String sex = createStrInput(input, "sex");
+//        Integer age = createNumInput(input, "age");
+//
+//        System.out.println("信息采集完成，是否生成个人简介？ \n 1.是 2.退出");
+//        boolean flag = true;
+//        while (flag) {
+//            String isContinue = createStrInput(input, "isContinue");
+//            if (isContinue.equals("1")) {
+//                createResume(name, sex, age);
+//                flag = false;
+//            } else if (isContinue.equals("2")) {
+//                flag = false;
+//            } else {
+//                System.out.println("输入错误，请重新输入!");
+//            }
+//        }
+        divSenstive();
     }
 
     private static void createResume(String name, String sex, Integer age) {
